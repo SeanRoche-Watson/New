@@ -23,7 +23,7 @@ thermoType
     mixture         pureMixture;
     transport       const;
     thermo          eConst;
-    equationOfState perfectFluid;
+    equationOfState perfectGas; // perfectFluid;
     specie          specie;
     energy          sensibleInternalEnergy;
 }
@@ -44,7 +44,7 @@ mixture
     equationOfState
     {
         R           141.67; // Gas constant [J/(kg.K)]
-        rho0        0.24;   // Reference vapour density [kg/m^3]
+       // rho0        0.24;   // Reference vapour density [kg/m^3]
     }
     thermodynamics
     {
@@ -54,7 +54,7 @@ mixture
     transport
     {
         mu          5.2e-5; 
-        Pr          1e-6;
+        Pr          0.7;
     }
 }
 

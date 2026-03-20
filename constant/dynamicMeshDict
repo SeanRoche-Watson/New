@@ -43,10 +43,10 @@ maxCells        40000000;
 // on surfaceScalarFields that do not need to be reinterpolated.
 correctFluxes
 (
-    (phi none)
+    (phi U)
     (nHatf none)
     (rhoPhi none)
-    (alphaPhi0.metal none)
+    (alphaPhi0.metal U)
     (ghf none)
     (alphaPhiUn none)
     (rhophicp none)

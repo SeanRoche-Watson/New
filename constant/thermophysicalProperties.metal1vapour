@@ -23,7 +23,7 @@ thermoType
     mixture         pureMixture;
     transport       const;
     thermo          eConst;
-    equationOfState perfectFluid;
+    equationOfState perfectGas; //perfectFluid
     specie          specie;
     energy          sensibleInternalEnergy;
 }
@@ -43,7 +43,7 @@ mixture
     equationOfState
     {
         R           148.87; // Gas constant [J/(kg.K)] (R_univ / molWeight)
-        rho0        0.22;   // Reference vapour density [kg/m^3] at boiling point
+        //rho0        0.22;   // Reference vapour density [kg/m^3] at boiling point
     }
     thermodynamics
     {
@@ -53,6 +53,6 @@ mixture
     transport
     {
         mu          5.0e-5; // Dynamic viscosity [Pa.s]
-        Pr          1e-6;    // Prandtl number
+        Pr          0.7;    // Prandtl number
     }
 }
