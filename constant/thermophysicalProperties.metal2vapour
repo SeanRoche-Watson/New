@@ -1,0 +1,62 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties.chromiumVapour;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phaseState      gaseous;  // or: gaseous, solid
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          eConst;
+    equationOfState perfectFluid;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+
+TSolidus	5.0;
+TLiquidus	10.0;
+LatentHeat	1.0;
+elec_conductivity	1.0;
+magnetic_permeability	1.256e-6;
+
+mixture
+{
+    specie
+    {
+        molWeight   52.00; // Atomic weight of Chromium
+    }
+    equationOfState
+    {
+        R           159.89; // Gas constant [J/(kg.K)]
+        rho0        0.20;   // Reference vapour density [kg/m^3]
+    }
+    thermodynamics
+    {
+        Cv          460;    
+        Hf          6.52e6; 
+    }
+    transport
+    {
+        mu          4.5e-5; 
+        Pr          1e-6;
+    }
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,61 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties.molybdenumVapour;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phaseState      gaseous;  // or: gaseous, solid
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          eConst;
+    equationOfState perfectFluid;//rhoConst;//perfectFluid;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+TSolidus	5.0;
+TLiquidus	10.0;
+LatentHeat	1.0;
+elec_conductivity	1.0;
+magnetic_permeability	1.256e-6;
+
+mixture
+{
+    specie
+    {
+        molWeight   95.95; // Atomic weight of Molybdenum
+    }
+    equationOfState
+    {
+        R           86.65;  // Gas constant [J/(kg.K)]
+		rho0        0.40;   // Reference vapour density [kg/m^3] (Heavier atom)
+    }
+    thermodynamics
+    {
+        Cv          250;    
+        Hf          6.12e6; 
+    }
+    transport
+    {
+        mu          6.0e-5; 
+        Pr          1e-6;
+    }
+}
+
+
+// ************************************************************************* //

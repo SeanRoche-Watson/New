@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties.ironVapour;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phaseState      gaseous;
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          eConst;
+    equationOfState perfectFluid;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+TSolidus	5.0;
+TLiquidus	10.0;
+LatentHeat	1.0;
+elec_conductivity       1; // Vapour is essentially non-conductive
+magnetic_permeability   1.256e-6;
+
+mixture
+{
+    specie
+    {
+        molWeight   55.85; // Atomic weight of Iron
+    }
+    equationOfState
+    {
+        R           148.87; // Gas constant [J/(kg.K)] (R_univ / molWeight)
+        rho0        0.22;   // Reference vapour density [kg/m^3] at boiling point
+    }
+    thermodynamics
+    {
+        Cv          450;    // Specific heat at constant volume [J/(kg.K)]
+        Hf          6.26e6; // Heat of vaporization [J/kg]
+    }
+    transport
+    {
+        mu          5.0e-5; // Dynamic viscosity [Pa.s]
+        Pr          1e-6;    // Prandtl number
+    }
+}
